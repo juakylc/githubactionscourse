@@ -10,5 +10,5 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v4
             - name: Printing Folders
-              run: ls -d
+              run: ls -a
             
