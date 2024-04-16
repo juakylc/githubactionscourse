@@ -3,12 +3,12 @@ on:
     #- push
     - workflow_dispatch
 jobs:
-    job1:
+    echo-hello:
         runs-on: ubuntu-latest
         steps:
             - name: Saludar
               run: echo 'Hello world'
-    job2:
+    echo-goodbye:
         runs-on: ubuntu-latest
         steps:
             # - name: Multilinea
