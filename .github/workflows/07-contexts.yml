@@ -1,0 +1,18 @@
+name: 07 - Contexts.
+on:
+    # - push
+    - workflow_dispatch
+
+jobs:
+    echo-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Show info
+              run: |
+                echo "Nombre del evento: ${{github.event_name}}"
+                echo "Ref: ${{github.ref}}"
+                echo "SHA: ${{github.sha}}"
+                echo "Actor: ${{github.actor}}"
+                echo "Flujo de trabajo: ${{github.workflow}}"
+                echo "ID de ejecución: ${{github.run_id}}"
+                echo "Número de ejecución: ${{github.run_number}}"
