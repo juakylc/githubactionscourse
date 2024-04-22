@@ -1,4 +1,4 @@
-name: 04 - Uso de Actions
+name: 03 - Runners de workflow
 on:
     #- push
     - workflow_dispatch
@@ -7,12 +7,12 @@ jobs:
     ubuntu-echo:
         runs-on: ubuntu-latest
         steps:
-            - run: echo ${{ runner.name }}
+            - run: echo ${{ runner.os }}
     windows-echo:
         runs-on: windows-latest
         steps:
-            - run: echo ${{ runner.name }}
+            - run: echo ${{ runner.os }}
     mac-echo:
         runs-on: macos-latest
         steps:
-            - run: echo ${{ runner.name }}
+            - run: echo ${{ runner.os }}
