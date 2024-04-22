@@ -1,0 +1,18 @@
+name: 04 - Uso de Actions
+on:
+    #- push
+    - workflow_dispatch
+
+jobs:
+    ubuntu-echo:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo ${{ runner.name }}
+    windows-echo:
+        runs-on: windows-latest
+        steps:
+            - run: echo ${{ runner.name }}
+    mac-echo:
+        runs-on: macos-latest
+        steps:
+            - run: echo ${{ runner.name }}
