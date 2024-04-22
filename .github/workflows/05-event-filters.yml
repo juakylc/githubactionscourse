@@ -1,0 +1,13 @@
+name: 05 - Event Filters.
+on:
+    # push:
+    #     branches:
+    #         - main
+    workflow_dispatch:
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print running
+              run: echo 'Running whenever branch is main'
