@@ -3,13 +3,8 @@ env:
     WORKFLOW_VAR: I am a workflow env var
     OVERWRITTEN: I will be overwritten
 on:
-    #push:
-    workflow_dispatch:
-        inputs:
-            debug:
-                description: 'Debug mode'
-                type: boolean
-                default: false
+    #- push:
+    - workflow_dispatch
 
 jobs:
     echo:
