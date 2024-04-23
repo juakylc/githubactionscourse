@@ -2,12 +2,21 @@ name: 10 - Using Functions.
 
 on:
     #- push
-    - workflow_dispatch
+    pull_request:
+        types: [opened, synchronize]
+    workflow_dispatch:
 
 jobs:
     echo1:
         runs-on: ubuntu-latest
         steps:
+            - name: Print PR title
+              run: echo "Pull request tittle ${{github.event.pull_request.title}}"
+            - name: Print PR labels
+              run: echo "Pull request labels ${{toJson(github.event.pull_request.labels)}}"
+            - name: Bug step
+              if: contains(github.event.pull_request.title, 'fix') && !cancelled()
+              run: echo "I am a bug fix"
             - name: Sleep for 20 seconds
               run: sleep 20
             - name: Failing step
