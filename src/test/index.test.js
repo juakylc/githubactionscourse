@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { increment } from "../App";
+import { increment } from "../functions/functions";
 
 describe('Función incremento', () => {
     it('Increment debe ser una función', () => {
