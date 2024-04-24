@@ -21,6 +21,7 @@ jobs:
         # defaults:
         #     run:
         #         working-directory: my-app
+        needs: install-deps
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -30,14 +31,14 @@ jobs:
                   node-version: ${{inputs.node-version}}
             - name: Download cached dependencies
               id: cache
-              if: ${{inputs.use-cache}}
+              #if: ${{inputs.use-cache}}
               uses: actions/cache@v3
               with:
                   path: ./node_modules
-                  key: deps-node-modules-${{ hashFiles('./package-lock.json') }}
-            - name: Install dependencies
-              if: ${{steps.cache.outputs.cache-hit != 'true'}}
-              run: npm ci
+                  key: ${{needs.install-deps.outputs.deps-cache-key}} #deps-node-modules-${{ hashFiles('./package-lock.json') }}
+            # - name: Install dependencies
+            #   if: ${{steps.cache.outputs.cache-hit != 'true'}}
+            #   run: npm ci
             - name: Testing
               run: npm run test
             - name: Building
