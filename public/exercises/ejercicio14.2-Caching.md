@@ -31,4 +31,3 @@ Para lograr esto, extenderemos el flujo de trabajo 14-caching.yaml
     - Actualizar el step Download cached dependencies para usar la salida del job install-deps en lugar de codificar de nuevo el cache key. Además, ya no debería verse influenciado por la entrada use-cache, ya que la caché se vuelve necesaria para la correcta ejecución del job.
 
 4. Confirmar los cambios y hacer push del código. Desencadenar el flujo de trabajo varias veces e inspeccionar los tiempos de ejecución de cada paso. ¿Cuánto tiempo se tarda en instalar las dependencias? ¿Cuánto tiempo tardaría si el flujo de trabajo se ejecutara 1000 veces?
-he code. Trigger the workflow a few times and inspect the running times of each step. How much time does it take to install the dependencies? How much time would it take if the workflow ran 1000 times?
