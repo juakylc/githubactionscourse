@@ -1,18 +1,33 @@
 name: 17 - Working with Environments.
-run-name: 17 - Working with Environments | env - ${{ inputs.target-env }}
+# run-name: 17 - Working with Environments | env - ${{ inputs.target-env }}
 on:
     workflow_dispatch:
-        inputs:
-            target-env:
-                description: 'Which environment the workflow will target'
-                type: environment
-                default: pre
+        # inputs:
+        #     target-env:
+        #         description: 'Which environment the workflow will target'
+        #         type: environment
+        #         default: pre
 jobs:
-    echo:
+    deploy-pre:
         runs-on: ubuntu-latest
-        environment: ${{inputs.target-env}}
+        environment: pre
         env:
-            my-env-value: ${{vars.MY_ENV_VALUE}}
+            my-env-value: ${{ vars.MY_ENV_VALUE && vars.MY_ENV_VALUE || 'default value' }}
         steps:
             - name: Echo vars
-              run: echo "Env variable:${{ env.my-env-value }}"
+              run: echo "Deploying to PRE"
+    e2e-tests:
+        runs-on: ubuntu-latest
+        needs: deploy-pre
+        steps:
+            - name: E2E tests
+              run: echo "Running E2E"
+    deploy-pro:
+        runs-on: ubuntu-latest
+        needs: e2e-tests
+        environment: pro
+        env:
+            my-env-value: ${{ vars.MY_ENV_VALUE && vars.MY_ENV_VALUE || 'default value' }}
+        steps:
+            - name: Echo vars
+              run: echo "Deploying to PRO"
