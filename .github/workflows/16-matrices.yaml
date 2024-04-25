@@ -17,7 +17,8 @@ jobs:
                       node-version: 21.x
                       tag: experimental
                 exclude:
-                    - tag: experimental
+                    - so: windows-latest
+                      node-version: 18.x
         name: ${{ matrix.os }} - ${{ matrix.node-version }}
         steps:
             - name: Setup node
