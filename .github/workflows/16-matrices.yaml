@@ -17,7 +17,7 @@ jobs:
                       node-version: 21.x
                       tag: experimental
                 exclude:
-                    - so: windows-latest
+                    - os: windows-latest
                       node-version: 18.x
         name: ${{ matrix.os }} - ${{ matrix.node-version }}
         steps:
